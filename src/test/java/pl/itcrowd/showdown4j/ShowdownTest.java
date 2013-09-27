@@ -113,6 +113,19 @@ public class ShowdownTest {
     }
 
     @Test
+    public void plugin() throws Exception
+    {
+//        Given
+        showdown.addPlugin("image", getClass().getResourceAsStream("/pl/itcrowd/showdown4j/showdown.image.js"));
+
+//        When
+        final String result = showdown.makeHtml("((123))");
+
+//        Then
+        assertEquals("<p><img src=\"/api/screen/data/123\"/></p>", result);
+    }
+
+    @Test
     public void singleBackslash() throws Exception
     {
 //        Given
